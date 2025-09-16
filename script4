@@ -27,11 +27,11 @@ aws ec2 authorize-security-group-ingress --group-id $security_group_id \
  --protocol tcp --port 80 --cidr 0.0.0.0/0 --region $region
 
 # Launch an EC2 instance in the public subnet
-# COMPLETE THIS PART
 instance_id=$(aws ec2 run-instances \
   --image-id $debian_ami \
   --count 1 \
   --instance-type t2.micro \
+  --key-name $key_name
   --security-group-ids $security_group_id \
   --subnet-id $subnet_id \
   --associate-public-ip-address \
@@ -43,7 +43,6 @@ instance_id=$(aws ec2 run-instances \
 aws ec2 wait instance-running --instance-ids $instance_id
 
 # Get the public IP address of the EC2 instance
-# COMPLETE THIS PART
 public_ip=$(aws ec2 describe-instances \
   --instance-ids $instance_id \
   --query 'Reservations[0].Instances[0].PublicIpAddress' \
@@ -51,6 +50,5 @@ public_ip=$(aws ec2 describe-instances \
   --region $region)
 
 # Write instance data to a file
-# COMPLETE THIS PART
 echo $public_ip > instance_data
 echo "Public IP: $public_ip"

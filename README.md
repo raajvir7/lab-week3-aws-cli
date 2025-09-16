@@ -8,4 +8,4 @@ script 3:
 - link-to-relevant-documentation-section
 
 script 4:
-- link-to-relevant-documentation-section
+- https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html

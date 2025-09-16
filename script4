@@ -31,7 +31,7 @@ instance_id=$(aws ec2 run-instances \
   --image-id $debian_ami \
   --count 1 \
   --instance-type t2.micro \
-  --key-name $key_name
+  --key-name $key_name \
   --security-group-ids $security_group_id \
   --subnet-id $subnet_id \
   --associate-public-ip-address \

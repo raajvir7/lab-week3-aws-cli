@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IAM_USERNAME="IT-Prov"             
+PUBLIC_KEY_PATH="~/.ssh/bcitkey.pub"
+
+PUBLIC_KEY_CONTENT=$(cat "$PUBLIC_KEY_PATH")
+
+aws iam upload-ssh-public-key \
+    --user-name "$IAM_USERNAME" \
+    --ssh-public-key-body "$PUBLIC_KEY_CONTENT"
